@@ -23,7 +23,7 @@ angular.module('funmarketTeemukin65FrontendApp').controller('AddCtrl',
 
       $scope.postNewAds = function () {
         $scope.newAdFields.priceCents = _priceStringToCentAmount($scope.newAdFields.enteredPrice);
-        delete $scope.newAdFields.enteredPrice;
+
 
         return funmarketService.save([], $scope.newAdFields, function (newAds) {
           $log.info('funmarketService, ads saved successfully, id:' + newAds.id ? newAds.id : 'no id provided!');
