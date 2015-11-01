@@ -1,0 +1,60 @@
+<div class="heading">
+  <h1>Funmarket</h1>
+
+  <div class="row">
+    <p class="lead col-md-8">
+
+      Täällä voit jättää ilmoituksiasi muiden luettavaksi ja seurata muiden jättämiä ilmoituksia.
+    </p>
+
+    <p class="col-md-4">
+      <a class="btn btn-lg btn-success" ng-href="#/addAds">Jätä oma ilmoituksesi!
+        <span class="glyphicon glyphicon-ok"></span>
+      </a>
+    </p>
+  </div>
+</div>
+
+<div ng-show="adsList.length < 1 ">
+  <span class="alert alert-info"> Ilmoituksia ei löytynyt! </span>
+
+
+</div>
+
+<div class="row ads-row" ng-show="adsList.length >0" ng-repeat="ad in adsList">
+
+
+  <div class="col-md-1"> {{$index}}</div>
+  <div class="col-md-5"> {{ad.title}}
+    <div class="row">
+      <div class="col-md-12">{{ad.description}}</div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="row">
+      <span class="col-md-3">Hinta:</span>
+      <span class="col-md-offset-1 col-md-8">{{ad.priceCents/100 | currency}}</span>
+    </div>
+
+  </div>
+  <div class="col-md-4">
+    Yhteystiedot:
+    <div class="row">
+      <div class="col-md-4">
+        Sähköposti
+      </div>
+      <div class="col-md-8">
+        {{ad.email}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        Puhelin:
+      </div>
+      <div class="col-md-8">
+        {{ad.phone}}
+      </div>
+    </div>
+  </div>
+
+</div>

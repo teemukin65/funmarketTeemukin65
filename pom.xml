@@ -29,22 +29,38 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.4-1201-jdbc41</version>
-            <scope>runtime</scope>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.1.0.Final</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>fi.ratamaa</groupId>
+            <artifactId>dtoconverter</artifactId>
+            <version>2.0.3-RELEASE</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -54,98 +70,35 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <!-- Use the latest released version:
-                https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
-                <version>0.0.26</version>
-                <configuration>
-                    <workingDirectory>src/main/resources/static</workingDirectory>
-                    <nodeVersion>v4.2.1</nodeVersion>
-                    <npmVersion>1.4.12</npmVersion>
-                </configuration>
-
-                <!--<executions>-->
-
-                <!--<execution>-->
-                <!--<id>install node and npm</id>-->
-                <!--<goals>-->
-                <!--<goal>install-node-and-npm</goal>-->
-                <!--</goals>-->
-                <!--<configuration>-->
-                <!--<installDirectory></installDirectory>-->
-                <!--</configuration>-->
-                <!--</execution>-->
-                <!--<execution>-->
-                <!--<id>npm install</id>-->
-                <!--<goals>-->
-                <!--<goal>npm</goal>-->
-                <!--</goals>-->
-                <!--&lt;!&ndash; Optional configuration which provides for running any npm command &ndash;&gt;-->
-                <!--<configuration>-->
-                <!--<arguments>install</arguments>-->
-                <!--</configuration>-->
-                <!--</execution>-->
-
-                <!--<execution>-->
-                <!--<id>npm run build</id>-->
-                <!--<goals>-->
-                <!--<goal>npm</goal>-->
-                <!--</goals>-->
-                <!--<configuration>-->
-                <!--<arguments>run build</arguments>-->
-                <!--</configuration>-->
-                <!--</execution>-->
-
-                <!--<execution>-->
-                <!--<id>bower install</id>-->
-                <!--<goals>-->
-                <!--<goal>bower</goal>-->
-                <!--</goals>-->
-                <!--<configuration>-->
-                <!--<arguments>install</arguments>-->
-                <!--</configuration>-->
-                <!--</execution>-->
-
-                <!--<execution>-->
-                <!--<id>jspm install</id>-->
-                <!--<goals>-->
-                <!--<goal>jspm</goal>-->
-                <!--</goals>-->
-                <!--<configuration>-->
-                <!--<arguments>&#45;&#45;version</arguments>-->
-                <!--</configuration>-->
-                <!--</execution>-->
-
-                <!--<execution>-->
-                <!--<id>grunt build</id>-->
-                <!--<goals>-->
-                <!--<goal>grunt</goal>-->
-                <!--</goals>-->
-                <!--<configuration>-->
-                <!--<arguments>&#45;&#45;no-color</arguments>-->
-                <!--</configuration>-->
-                <!--</execution>-->
-
-                <!--<execution>-->
-                <!--<id>javascript tests</id>-->
-                <!--<goals>-->
-                <!--<goal>karma</goal>-->
-                <!--</goals>-->
-                <!--<configuration>-->
-                <!--<karmaConfPath>src/test/javascript/karma.conf.ci.js</karmaConfPath>-->
-                <!--</configuration>-->
-                <!--</execution>-->
-
-                <!--</executions>-->
-
-            </plugin>
-            <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
             </plugin>
-
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources/static</directory>
+                <targetPath>static</targetPath>
+                <includes>
+                    <include>app/*.*</include>
+                    <include>app/**/*.*</include>
+                </includes>
+            </resource>
+
+            <resource>
+                <directory>src/main/resources</directory>
+                <targetPath>.</targetPath>
+                <filtering>true</filtering>
+                <includes>
+                    <include>*.properties</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+
+
+        </resources>
+
+
 
     </build>
 

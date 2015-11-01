@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.css"/>
+
+  <link rel="stylesheet" href="styles/main.css">
+
+</head>
+<body ng-app="funmarketTeemukin65FrontendApp">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="#/">funmarketTeemukin65Frontend</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+        <ul class="nav navbar-nav">
+          <li><a href="#/">Ilmoitukset</a></li>
+          <li><a ng-href="#/addAds">Lisää ilmoituksesi</a></li>
+          <li><a ng-href="#/about">Tietoja</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div ng-view=""></div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <p><a href="#/about"><span class="glyphicon glyphicon-info-sign"></span>About this service</a></p>
+  </div>
+</div>
+
+<script src="assets/jquery/dist/jquery.js"></script>
+<script src="assets/angular/angular.js"></script>
+<script src="assets/bootstrap/dist/js/bootstrap.js"></script>
+<script src="assets/angular-i18n/angular-locale_fi.js"></script>
+<script src="assets/angular-animate/angular-animate.js"></script>
+<script src="assets/angular-cookies/angular-cookies.js"></script>
+<script src="assets/angular-messages/angular-messages.js"></script>
+<script src="assets/angular-resource/angular-resource.js"></script>
+<script src="assets/angular-route/angular-route.js"></script>
+<script src="assets/angular-sanitize/angular-sanitize.js"></script>
+<script src="assets/angular-touch/angular-touch.js"></script>
+
+
+<script src="scripts/app.js"></script>
+<script src="scripts/services/funmarketservice.js"></script>
+<script src="scripts/services/infoService.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/add.js"></script>
+<script src="scripts/controllers/about.js"></script>
+
+</body>
+</html>
