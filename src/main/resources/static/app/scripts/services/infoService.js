@@ -3,7 +3,7 @@
  */
 
 angular.module('funmarketTeemukin65FrontendApp')
-  .service('serviceInfo', ['$resource', '$log',
+  .service('infoService', ['$resource', '$log',
     function ($resource, $log) {
       return $resource('/manage/info');
 

@@ -28,11 +28,6 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
-        resolve: {
-          info: function (serviceInfo) {
-            return serviceInfo.$get;
-          }
-        },
         controllerAs: 'about'
       })
       .when('/addAds', {

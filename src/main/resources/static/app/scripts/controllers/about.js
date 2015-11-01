@@ -8,9 +8,9 @@
  * Controller of the funmarketTeemukin65FrontendApp
  */
 angular.module('funmarketTeemukin65FrontendApp')
-  .controller('AboutCtrl', ['$scope', 'info', function ($scope, info) {
+  .controller('AboutCtrl', ['$scope', 'infoService', function ($scope, infoService) {
 
-    $scope.serviceInfo = info;
+    $scope.serviceInfo = infoService.get();
 
 
   }]);
