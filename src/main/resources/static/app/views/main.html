@@ -15,7 +15,11 @@
   </div>
 </div>
 
-<div ng-show="adsList.length < 1 ">
+<div ng-show="!adsList.$resolved">
+  <span class="alert alert-warning">Haetaan ilmoituksia...</span>
+</div>
+
+<div ng-show="adsList.length < 1 && adsList.$resolved ">
   <span class="alert alert-info"> Ilmoituksia ei löytynyt! </span>
 
 
