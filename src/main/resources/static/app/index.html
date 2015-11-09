@@ -55,6 +55,13 @@
   </div>
 </div>
 
+<script type="text/ng-template" id="common-error-messages">
+  <div class="alert alert-warning" role="alert" ng-message="required">Tämä tieto vaaditaan!</div>
+  <div class="alert alert-error" role="alert" ng-message="pattern">Väärää muotoa! </div>
+  <div class="alert alert-error" role="alert" ng-message="email">Anna sähköpostiosoite muodossa joku@example.com ! </div>
+
+</script>
+
 <script src="assets/jquery/dist/jquery.js"></script>
 <script src="assets/angular/angular.js"></script>
 <script src="assets/bootstrap/dist/js/bootstrap.js"></script>

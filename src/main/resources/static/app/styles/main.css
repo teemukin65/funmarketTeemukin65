@@ -68,6 +68,10 @@ body {
   margin-bottom: 0.2em;
 }
 
+div[ng-messages]> div > div[ng-message]{
+  margin-top: 0.5em;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {

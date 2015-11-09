@@ -7,17 +7,31 @@
     <label for="inputTitle" class="col-sm-2 control-label">Ilmoituksen otsikko</label>
 
     <div class="col-sm-10">
-      <input type="text" class="form-control" required="true" ng-model="newAdFields.title" id="inputTitle"
+      <input type="text" class="form-control" required="true" ng-model="newAdFields.title" name="inputTitle" id="inputTitle"
              placeholder="Myyvä otsikko">
+
+      <div ng-messages="AdsAddingForm.inputTitle.$error">
+        <div ng-if="AdsAddingForm.inputTitle.$dirty">
+          <div ng-messages-include="common-error-messages"></div>
+        </div>
+      </div>
     </div>
+
   </div>
   <div class="form-group">
     <label for="inputDescription" class="col-sm-2 control-label">Ilmoituksen teksti</label>
 
     <div class="col-sm-10">
-      <input type="text" class="form-control" required="true" ng-model="newAdFields.description" id="inputDescription"
+      <input type="text" class="form-control" required="true" ng-model="newAdFields.description"
+             name="inputDescription" id="inputDescription"
              placeholder="Kuvaile hyvin">
+      <div ng-messages="AdsAddingForm.inputDescription.$error">
+        <div ng-if="AdsAddingForm.inputDescription.$dirty">
+          <div ng-messages-include="common-error-messages"></div>
+        </div>
+      </div>
     </div>
+
   </div>
 
   <div class="form-group">
@@ -25,8 +39,14 @@
 
     <div class="col-sm-10">
       <input type="text" ng-pattern="/^\d+(,\d{1,2})?$/" class="form-control" required="true"
-             ng-model="newAdFields.enteredPrice" id="inputPrice" placeholder="Muotoa 00,00">
+             ng-model="newAdFields.enteredPrice" name="inputPrice" id="inputPrice" placeholder="Muotoa 00,00">
+      <div ng-messages="AdsAddingForm.inputPrice.$error">
+        <div ng-if="AdsAddingForm.inputPrice.$dirty">
+          <div ng-messages-include="common-error-messages"></div>
+        </div>
+      </div>
     </div>
+
   </div>
 
 
@@ -36,8 +56,13 @@
     <label for="inputEmail" class="col-sm-2 control-label">Myyjän sähköposti</label>
 
     <div class="col-sm-10">
-      <input type="email" class="form-control" required="true" ng-model="newAdFields.email" id="inputEmail"
+      <input type="email" class="form-control" required="true" ng-model="newAdFields.email" name="inputEmail" id="inputEmail"
              placeholder="nimi@example.fi">
+      <div ng-messages="AdsAddingForm.inputEmail.$error">
+        <div ng-if="AdsAddingForm.inputEmail.$dirty">
+          <div ng-messages-include="common-error-messages"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group">
@@ -45,7 +70,12 @@
 
     <div class="col-sm-10">
       <input type="tel" class="form-control" ng-pattern="/^[0-9-]+$/" required="true" ng-model="newAdFields.phone"
-             id="inputTel" placeholder="000-00000000">
+             name="inputTel" id="inputTel" placeholder="000-00000000">
+      <div ng-messages="AdsAddingForm.inputTel.$error">
+        <div ng-if="AdsAddingForm.inputTel.$dirty">
+          <div ng-messages-include="common-error-messages"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -63,3 +93,9 @@
 
 
 </form>
+<script type="text/ng-template" id="common-error-messages">
+  <div class="alert alert-warning" role="alert" ng-message="required">Tämä tieto vaaditaan!</div>
+  <div class="alert alert-warning" role="alert" ng-message="pattern">Väärää muotoa! </div>
+  <div class="alert alert-warning" role="alert" ng-message="email">Anna sähköpostiosoite muodossa joku@example.com ! </div>
+
+</script>
