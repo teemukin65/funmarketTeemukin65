@@ -16,4 +16,6 @@ public interface FunmarketApiService {
 
     AdvertisementDto postAdvertisement(AdvertisementDto advertisementDto);
 
+    void deleteAdvertisement(String id);
+
 }

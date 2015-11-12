@@ -4,6 +4,7 @@ import fi.teemukin65.alma.model.funmarketApi.MarketAds;
 import fi.teemukin65.alma.services.dto.AdvertisementDto;
 import fi.teemukin65.alma.services.dto.FunmarketDtoConverter;
 import javassist.NotFoundException;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +28,7 @@ import java.util.List;
  * Created by teemu on 27.10.2015.
  */
 @Service
+@Validated
 public class DefaultFunmarketApiService implements FunmarketApiService {
 
 
@@ -33,7 +39,7 @@ public class DefaultFunmarketApiService implements FunmarketApiService {
     FunmarketDtoConverter funmarketDtoConverter;
 
 
-    final static String marketAdsApiUrl = "http://mepa-store-api.herokuapp.com/marketads";
+    final static String marketAdsApiUrl = "https://mepa-store-api.herokuapp.com/marketads";
     Logger logger = LoggerFactory.getLogger(this.getClass());
     RestTemplate marketAdsTempate = new RestTemplate();
 
@@ -64,7 +70,7 @@ public class DefaultFunmarketApiService implements FunmarketApiService {
     }
 
     @Override
-    public AdvertisementDto getAdvertisement(String id) {
+    public AdvertisementDto getAdvertisement( @NotEmpty @Size(min=24,max=24) String id) {
         MarketAds marketAds = marketAdsTempate.getForObject(marketAdsApiUrl + "/{id}", MarketAds.class, id);
         return funmarketDtoConverter.convert(
                 marketAds,
@@ -91,6 +97,11 @@ public class DefaultFunmarketApiService implements FunmarketApiService {
                 returnedAds,
                 new AdvertisementDto()
         );
+    }
+
+    @Override
+    public void deleteAdvertisement(@NotEmpty @Size(min=24,max=24) String id) {
+        marketAdsTempate.delete(marketAdsApiUrl + "/{id}", id);
     }
 
 

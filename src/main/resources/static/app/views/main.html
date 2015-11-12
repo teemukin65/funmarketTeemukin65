@@ -15,12 +15,12 @@
   </div>
 </div>
 
-<div ng-show="!adsList.$resolved">
-  <span class="alert alert-warning">Haetaan ilmoituksia...</span>
+<div class="alert alert-info"  ng-show="!adsList.$resolved">
+  Haetaan ilmoituksia...
 </div>
 
-<div ng-show="adsList.length < 1 && adsList.$resolved ">
-  <span class="alert alert-info"> Ilmoituksia ei löytynyt! </span>
+<div class="alert alert-info"  ng-show="adsList.length < 1 && adsList.$resolved ">
+   Ilmoituksia ei löytynyt!
 
 
 </div>
@@ -29,7 +29,7 @@
 
 
   <div class="col-md-1"> {{$index}}</div>
-  <div class="col-md-5"> {{ad.title}}
+  <div class="col-md-4"> {{ad.title}}
     <div class="row">
       <div class="col-md-12">{{ad.description}}</div>
     </div>
@@ -60,5 +60,11 @@
       </div>
     </div>
   </div>
+  <div class="col-md-1">
+    <br/>
+    <button class="button" ng-click="deleteAd(ad.id)" > <span class="glyphicon glyphicon-trash"></span> </button>
+  </div>
 
 </div>
+
+

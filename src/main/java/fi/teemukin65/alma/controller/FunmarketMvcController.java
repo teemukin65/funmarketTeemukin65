@@ -5,6 +5,7 @@ import fi.teemukin65.alma.services.FunmarketApiService;
 import fi.teemukin65.alma.services.dto.AdvertisementDto;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,5 +34,11 @@ public class FunmarketMvcController {
     @RequestMapping(value = "ads", method = RequestMethod.POST)
     AdvertisementDto postMarketAd(@RequestBody(required = true) @Valid AdvertisementDto advertisementDto) {
         return funmarketApiService.postAdvertisement(advertisementDto);
+    }
+
+    @RequestMapping(value = "ads/{id}", method = RequestMethod.DELETE)
+    HttpStatus deleteMarketAd(@PathVariable(value = "id") String id) {
+        funmarketApiService.deleteAdvertisement(id);
+        return HttpStatus.OK; // if not, exception has been raised already...
     }
 }
